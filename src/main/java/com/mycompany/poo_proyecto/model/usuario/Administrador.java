@@ -64,4 +64,14 @@ public class Administrador extends Usuario {
     public void setAreaResponsable(String areaResponsable) {
         this.areaResponsable = areaResponsable;
     }
+
+    @Override
+    public boolean login() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void logout() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

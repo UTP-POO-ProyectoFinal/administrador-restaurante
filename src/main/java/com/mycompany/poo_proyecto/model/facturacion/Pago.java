@@ -1,9 +1,5 @@
 package com.mycompany.poo_proyecto.model.facturacion;
 
-public class Pago {
-    
-}package com.mycompany.poo_proyecto.model.facturacion;
-
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 

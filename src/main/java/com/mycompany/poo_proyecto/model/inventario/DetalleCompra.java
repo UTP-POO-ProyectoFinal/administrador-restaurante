@@ -1,13 +1,18 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.poo_proyecto.model.inventario;
 
-/**
- *
- * @author Usuario
- */
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "detalle_compra")
 public class DetalleCompra {
-    
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_detalle")
+    private int idDetalle;
+    private int cantidad;
+    @Column(name = "precio_unitario")
+    private double precioUnitario;
+    private double subtotal;
+
 }
