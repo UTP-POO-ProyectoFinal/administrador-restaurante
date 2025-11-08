@@ -4,7 +4,9 @@ import com.mycompany.poo_proyecto.dao.*;
 import com.mycompany.poo_proyecto.model.usuario.*;
 import com.mycompany.poo_proyecto.model.facturacion.Facturacion;
 import com.mycompany.poo_proyecto.model.inventario.Inventario;
+import com.mycompany.poo_proyecto.model.pedido.Pedido;
 import java.time.LocalDate;
+import java.util.*;
 
 public class POO_Proyecto {
 
@@ -29,7 +31,7 @@ public class POO_Proyecto {
                 "Ramirez", // apellido
                 "carlos.ramirez@tienda.com", // correo
                 "1234pass", // password
-                Usuario.Roles.CAJERO, // rol
+                Usuario.Roles.CAJERO, // enum
                 "Mañana", // turno
                 1, // cajaAsignada
                 850.75f // ventasDiarias
@@ -38,16 +40,18 @@ public class POO_Proyecto {
         cajeroDAO.saveCajero(cajero);
 
         ClienteDAO clienteDAO = new ClienteDAO();
+        List<Pedido> historialVacio = new ArrayList();
         Cliente cliente1 = new Cliente(
                 87654321, // dni
                 "Ana", // nombre
                 "Lopez", // apellido
                 "ana.lopez@gmail.com", // correo
                 "abcd1234", // password
-                Usuario.Roles.CLIENTE, // rol
+                Usuario.Roles.CLIENTE, // enum
                 999888777,
-                "La cada de alguien",
-                2
+                "La casa de alguien",
+                historialVacio
+                
         );
 
         clienteDAO.saveCliente(cliente1);
@@ -76,6 +80,8 @@ public class POO_Proyecto {
                 590.00
         );
         
+        fact1.setCajero(cajero);
+        fact1.setCliente(cliente1);
         facturacionDAO.saveFacturacion(fact1);
         
         
