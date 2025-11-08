@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import com.mycompany.poo_proyecto.model.usuario.Cliente;
+import java.sql.Date;
+import java.sql.Time;
 
 @Entity
 @Table(name = "reservas")
@@ -19,6 +21,7 @@ public class Reserva {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_reserva", nullable = false)
     private int idReserva;
+
     @Column(name = "fecha_reserva", nullable = false)
     private LocalDate fechaReserva;
 
@@ -55,10 +58,10 @@ public class Reserva {
             throw new IllegalArgumentException("horaReserva no puede ser nula");
         }
         if (numPersonas <= 0) {
-            throw new IllegalArgumentException("numPersonas debe ser > 0");
+            throw new IllegalArgumentException("numPersonas debe ser mayor a 0");
         }
         if (cliente == null || mesa == null) {
-            throw new IllegalArgumentException("cliente y mesa no pueden ser nulos");
+            throw new IllegalArgumentException("cliente/mesa no pueden ser nulos");
         }
 
         this.fechaReserva = fechaReserva;
@@ -73,8 +76,7 @@ public class Reserva {
     protected void onCreate() {
         fechaCreacion = LocalDate.now();
     }
-
-    // --- Getters y Setters ---
+    
     public int getIdReserva() {
         return idReserva;
     }
@@ -101,7 +103,7 @@ public class Reserva {
 
     public void setNumPersonas(int numPersonas) {
         if (numPersonas <= 0) {
-            throw new IllegalArgumentException("numPersonas debe ser > 0");
+            throw new IllegalArgumentException("numPersonas debe ser mayor a 0");
         }
         this.numPersonas = numPersonas;
     }
@@ -134,7 +136,6 @@ public class Reserva {
         return fechaCreacion;
     }
 
-    // --- Lógica adicional ---
     public boolean esHoy() {
         return fechaReserva.equals(LocalDate.now());
     }
@@ -147,4 +148,3 @@ public class Reserva {
         this.estado = EstadoReserva.CANCELADA;
     }
 }
-

@@ -4,6 +4,12 @@ import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
 @Entity
 @Table(name = "mesas")
 public class Mesa {
@@ -20,12 +26,15 @@ public class Mesa {
     private int capacidad;
 
     @OneToMany(mappedBy = "mesa", fetch = FetchType.LAZY)
-    private List<Reserva> reservas = new ArrayList<>();
+    private List<Reserva> reservas = new ArrayList();
 
     public Mesa() {
     }
 
     public Mesa(int numeroMesa, int capacidad) {
+        if (capacidad <= 0) {
+            throw new IllegalArgumentException("La capacidad debe ser mayor a 0");
+        }
         this.numeroMesa = numeroMesa;
         this.capacidad = capacidad;
     }
@@ -47,6 +56,9 @@ public class Mesa {
     }
 
     public void setCapacidad(int capacidad) {
+        if (capacidad <= 0) {
+            throw new IllegalArgumentException("La capacidad debe ser mayor a 0");
+        }
         this.capacidad = capacidad;
     }
 
@@ -58,4 +70,3 @@ public class Mesa {
         this.reservas = reservas;
     }
 }
-
