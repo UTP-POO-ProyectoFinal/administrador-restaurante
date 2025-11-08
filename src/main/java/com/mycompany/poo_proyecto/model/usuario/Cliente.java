@@ -27,4 +27,32 @@ public class Cliente extends Usuario {
         this.direccion = direccion;
         this.historialCompras = historialCompras;
     }
+    
+    public List<Pedido> consultarHistorial() {
+        return new ArrayList<>(); // De momento, devuelve una lista vacía
+    }
+    
+    public int getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(int telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public int getHistorialCompras() {
+        return historialCompras;
+    }
+
+    public void setHistorialCompras(int historialCompras) {
+        this.historialCompras = historialCompras;
+    }
 }
