@@ -17,10 +17,32 @@ public class Proveedor extends Usuario {
     @Column(name = "ruc", nullable = false)
     private String ruc;
 
-    public Proveedor(int dni, String nombre, String apellido, String correo, String password, Roles rol, String contacto, String empresa, String ruc) {
+    public Proveedor() {
+    }
+
+    public Proveedor(int dni, String nombre, String apellido, String correo, String password, Roles rol,
+                     String contacto, String empresa, String ruc) {
         super(dni, nombre, apellido, correo, password, rol);
         this.contacto = contacto;
         this.empresa = empresa;
         this.ruc = ruc;
     }
+
+    public String getContacto() {
+        return contacto;
+    }
+
+    public void setContacto(String contacto) {
+        this.contacto = contacto;
+    }
+
+    public String getEmpresa() {
+        return empresa;
+    }
+
+    public String getRuc() {
+        return ruc;
+    }
+    
 }
+
