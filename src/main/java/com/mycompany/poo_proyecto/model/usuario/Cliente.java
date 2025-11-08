@@ -3,6 +3,7 @@ package com.mycompany.poo_proyecto.model.usuario;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
+import java.util.*;
 
 @Entity
 @Table(name = "clientes")
@@ -15,21 +16,21 @@ public class Cliente extends Usuario {
     private String direccion;
 
     @Column(name = "historial_compras", nullable = false)
-    private int historialCompras;
+    private List<Pedido> historialCompras;
 
     public Cliente() {
 
     }
 
-    public Cliente(int dni, String nombre, String apellido, String correo, String password, Roles rol, int telefono, String direccion, int historialCompras) {
+    public Cliente(int dni, String nombre, String apellido, String correo, String password, Roles rol, int telefono, String direccion, List<Pedido> historialCompras) {
         super(dni, nombre, apellido, correo, password, rol);
         this.telefono = telefono;
         this.direccion = direccion;
         this.historialCompras = historialCompras;
     }
     
-    public List<Pedido> consultarHistorial() {
-        return new ArrayList<>(); // De momento, devuelve una lista vacía
+    public List<Pedido> getHistorialCompras() {
+        this.historialCompras = historialCompras;
     }
     
     public int getTelefono() {
@@ -50,9 +51,5 @@ public class Cliente extends Usuario {
 
     public int getHistorialCompras() {
         return historialCompras;
-    }
-
-    public void setHistorialCompras(int historialCompras) {
-        this.historialCompras = historialCompras;
     }
 }
