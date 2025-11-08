@@ -16,7 +16,7 @@ public class Administrador extends Usuario {
         
     }
     
-    public Administrador(int dni, String nombre, String apellido, String correo, String password, String rol, int nivelAcceso, String areaResponsable) {
+    public Administrador(int dni, String nombre, String apellido, String correo, String password, Roles rol, int nivelAcceso, String areaResponsable) {
         super(dni, nombre, apellido, correo, password, rol);
         
         this.nivelAcceso = nivelAcceso;

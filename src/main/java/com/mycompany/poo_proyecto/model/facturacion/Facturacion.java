@@ -5,10 +5,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
-import java.util.Date;
-import org.hibernate.annotations.TimeZoneStorage;
-import org.hibernate.annotations.TimeZoneStorageType;
+import java.sql.Date;
 
 @Entity
 @Table(name = "facturacion")
@@ -34,12 +33,16 @@ public class Facturacion {
     public Facturacion() {
     }
 
-    public Facturacion(TipoComprobante tipoComprobante, String numeroComprobante, Date fecha, double subtotal, double igv, double total) {
+    public Facturacion(TipoComprobante tipoComprobante, String numeroComprobante, double subtotal, double igv, double total) {
         this.tipoComprobante = tipoComprobante;
         this.numeroComprobante = numeroComprobante;
-        this.fecha = fecha;
         this.subtotal = subtotal;
         this.igv = igv;
         this.total = total;
+    }
+
+    @PrePersist
+    protected void onCreate() {
+        fecha = new Date(new java.util.Date().getTime());
     }
 }

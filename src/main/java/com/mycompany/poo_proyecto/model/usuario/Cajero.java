@@ -21,7 +21,7 @@ public class Cajero extends Usuario {
 
     }
 
-    public Cajero(int dni, String nombre, String apellido, String correo, String password, String rol, String turno, int cajaAsignada, float ventasDiarias) {
+    public Cajero(int dni, String nombre, String apellido, String correo, String password, Roles rol, String turno, int cajaAsignada, float ventasDiarias) {
         super(dni, nombre, apellido, correo, password, rol);
         this.turno = turno;
         this.cajaAsignada = cajaAsignada;

@@ -5,13 +5,20 @@ import com.mycompany.poo_proyecto.model.usuario.*;
 import com.mycompany.poo_proyecto.model.facturacion.Facturacion;
 import com.mycompany.poo_proyecto.model.inventario.Inventario;
 import java.time.LocalDate;
-import java.util.Date;
 
 public class POO_Proyecto {
 
     public static void main(String[] args) {
         AdministradorDAO adminDAO = new AdministradorDAO();
-        Administrador admin = new Administrador(72212225, "Brayan", "Saldarriaga Nizama", "brayan@company.com", "123456", "administrador", 1, "cajero");
+        Administrador admin = new Administrador(
+                72212225,
+                "Brayan",
+                "Saldarriaga Nizama",
+                "brayan@company.com",
+                "123456",
+                Usuario.Roles.ADMINISTRADOR,
+                1,
+                "cajero");
 
         adminDAO.saveAdministrador(admin);
 
@@ -22,7 +29,7 @@ public class POO_Proyecto {
                 "Ramirez", // apellido
                 "carlos.ramirez@tienda.com", // correo
                 "1234pass", // password
-                "cajero", // rol
+                Usuario.Roles.CAJERO, // rol
                 "Mañana", // turno
                 1, // cajaAsignada
                 850.75f // ventasDiarias
@@ -37,8 +44,8 @@ public class POO_Proyecto {
                 "Lopez", // apellido
                 "ana.lopez@gmail.com", // correo
                 "abcd1234", // password
-                "cliente", // rol
-                "999888777",
+                Usuario.Roles.CLIENTE, // rol
+                999888777,
                 "La cada de alguien",
                 2
         );
@@ -52,7 +59,7 @@ public class POO_Proyecto {
                 "Martinez", // apellido
                 "luis.martinez@proveedor.com", // correo
                 "provepass", // password
-                "proveedor", // rol
+                Usuario.Roles.PROVEEDOR, // rol
                 "Maria Sanchez", // contacto
                 "Distribuidora Norte SAC", // empresa
                 "20123456789"
@@ -64,7 +71,6 @@ public class POO_Proyecto {
         Facturacion fact1 = new Facturacion(
                 Facturacion.TipoComprobante.BOLETA,
                 "F001-000123",
-                new Date(), // fecha actual
                 500.00, // subtotal
                 96.00,
                 590.00

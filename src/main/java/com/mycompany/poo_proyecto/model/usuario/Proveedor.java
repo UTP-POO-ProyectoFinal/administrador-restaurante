@@ -17,7 +17,7 @@ public class Proveedor extends Usuario {
     @Column(name = "ruc", nullable = false)
     private String ruc;
 
-    public Proveedor(int dni, String nombre, String apellido, String correo, String password, String rol, String contacto, String empresa, String ruc) {
+    public Proveedor(int dni, String nombre, String apellido, String correo, String password, Roles rol, String contacto, String empresa, String ruc) {
         super(dni, nombre, apellido, correo, password, rol);
         this.contacto = contacto;
         this.empresa = empresa;

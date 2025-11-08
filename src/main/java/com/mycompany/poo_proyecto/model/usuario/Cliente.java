@@ -9,7 +9,7 @@ import jakarta.persistence.Table;
 public class Cliente extends Usuario {
 
     @Column(name = "telefono", nullable = false)
-    private String telefono;
+    private int telefono;
 
     @Column(name = "direccion", nullable = false)
     private String direccion;
@@ -21,7 +21,7 @@ public class Cliente extends Usuario {
 
     }
 
-    public Cliente(int dni, String nombre, String apellido, String correo, String password, String rol, String telefono, String direccion, int historialCompras) {
+    public Cliente(int dni, String nombre, String apellido, String correo, String password, Roles rol, int telefono, String direccion, int historialCompras) {
         super(dni, nombre, apellido, correo, password, rol);
         this.telefono = telefono;
         this.direccion = direccion;

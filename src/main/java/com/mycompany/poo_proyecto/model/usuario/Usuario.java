@@ -8,6 +8,10 @@ import jakarta.persistence.MappedSuperclass;
 
 @MappedSuperclass
 abstract public class Usuario {
+    public enum Roles {
+        ADMINISTRADOR, CAJERO, CLIENTE, PROVEEDOR, USUARIO
+    }
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_usuario", nullable = false)
@@ -21,12 +25,12 @@ abstract public class Usuario {
     protected String correo;
     @Column(name = "contraseña", nullable = false)
     protected String password;
-    protected String rol;
+    protected Roles rol;
     
     public Usuario() {
     }
     
-    public Usuario(int dni, String nombre, String apellido, String correo, String password, String rol) {
+    public Usuario(int dni, String nombre, String apellido, String correo, String password, Roles rol) {
         this.dni = dni;
         this.nombre = nombre;
         this.apellido = apellido;
