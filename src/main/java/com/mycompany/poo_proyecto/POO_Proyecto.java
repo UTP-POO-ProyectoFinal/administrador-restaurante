@@ -11,7 +11,7 @@ import java.util.*;
 public class POO_Proyecto {
 
     public static void main(String[] args) {
-        AdministradorDAO adminDAO = new AdministradorDAO();
+        GenericDAO<Administrador> adminDAO = new GenericDAO<>();
         Administrador admin = new Administrador(
                 72212225,
                 "Brayan",
@@ -22,9 +22,9 @@ public class POO_Proyecto {
                 1,
                 "cajero");
 
-        adminDAO.saveAdministrador(admin);
+        adminDAO.saveClass(admin);
 
-        CajeroDAO cajeroDAO = new CajeroDAO();
+        GenericDAO<Cajero> cajeroDAO = new GenericDAO<>();
         Cajero cajero = new Cajero(
                 12345678, // dni
                 "Carlos", // nombre
@@ -37,9 +37,9 @@ public class POO_Proyecto {
                 850.75f // ventasDiarias
         );
 
-        cajeroDAO.saveCajero(cajero);
+        cajeroDAO.saveClass(cajero);
 
-        ClienteDAO clienteDAO = new ClienteDAO();
+        GenericDAO<Cliente> clienteDAO = new GenericDAO();
         List<Pedido> historialVacio = new ArrayList();
         Cliente cliente1 = new Cliente(
                 87654321, // dni
@@ -54,9 +54,9 @@ public class POO_Proyecto {
                 
         );
 
-        clienteDAO.saveCliente(cliente1);
+        clienteDAO.saveClass(cliente1);
 
-        ProveedorDAO proveedorDAO = new ProveedorDAO();
+        GenericDAO<Proveedor> proveedorDAO = new GenericDAO();
         Proveedor proveedor1 = new Proveedor(
                 45678912, // dni
                 "Luis", // nombre
@@ -69,9 +69,9 @@ public class POO_Proyecto {
                 "20123456789"
         );
 
-        proveedorDAO.saveProveedor(proveedor1);
+        proveedorDAO.saveClass(proveedor1);
 
-        FacturacionDAO facturacionDAO = new FacturacionDAO();
+        GenericDAO<Facturacion> facturacionDAO = new GenericDAO();
         Facturacion fact1 = new Facturacion(
                 Facturacion.TipoComprobante.BOLETA,
                 "F001-000123",
@@ -82,10 +82,10 @@ public class POO_Proyecto {
         
         fact1.setCajero(cajero);
         fact1.setCliente(cliente1);
-        facturacionDAO.saveFacturacion(fact1);
+        facturacionDAO.saveClass(fact1);
         
         
-        InventarioDAO inventarioDAO = new InventarioDAO();
+        GenericDAO<Inventario> inventarioDAO = new GenericDAO();
         Inventario inventario = new Inventario(
             100,               // stock
             20,                // stockMinimo
@@ -93,7 +93,7 @@ public class POO_Proyecto {
             LocalDate.now()    // fechaActualizacion
         );
         
-        inventarioDAO.saveAdministrador(inventario);
+        inventarioDAO.saveClass(inventario);
         
         System.out.println("Finalmente!!!!");
     }
