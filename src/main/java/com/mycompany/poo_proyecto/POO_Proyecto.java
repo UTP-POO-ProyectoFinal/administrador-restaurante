@@ -26,15 +26,15 @@ public class POO_Proyecto {
 
         GenericDAO<Cajero> cajeroDAO = new GenericDAO<>();
         Cajero cajero = new Cajero(
-                12345678, // dni
-                "Carlos", // nombre
-                "Ramirez", // apellido
-                "carlos.ramirez@tienda.com", // correo
-                "1234pass", // password
-                Usuario.Roles.CAJERO, // enum
-                "Mañana", // turno
-                1, // cajaAsignada
-                850.75f // ventasDiarias
+                12345678,
+                "Carlos",
+                "Ramirez",
+                "carlos.ramirez@tienda.com",
+                "1234pass",
+                Usuario.Roles.CAJERO,
+                "Mañana",
+                1,
+                850.75f
         );
 
         cajeroDAO.saveClass(cajero);
@@ -42,12 +42,12 @@ public class POO_Proyecto {
         GenericDAO<Cliente> clienteDAO = new GenericDAO();
         List<Pedido> historialVacio = new ArrayList();
         Cliente cliente1 = new Cliente(
-                87654321, // dni
-                "Ana", // nombre
-                "Lopez", // apellido
-                "ana.lopez@gmail.com", // correo
-                "abcd1234", // password
-                Usuario.Roles.CLIENTE, // enum
+                87654321,
+                "Ana",
+                "Lopez",
+                "ana.lopez@gmail.com",
+                "abcd1234",
+                Usuario.Roles.CLIENTE,
                 999888777,
                 "La casa de alguien",
                 historialVacio
@@ -58,14 +58,14 @@ public class POO_Proyecto {
 
         GenericDAO<Proveedor> proveedorDAO = new GenericDAO();
         Proveedor proveedor1 = new Proveedor(
-                45678912, // dni
-                "Luis", // nombre
-                "Martinez", // apellido
-                "luis.martinez@proveedor.com", // correo
-                "provepass", // password
-                Usuario.Roles.PROVEEDOR, // rol
-                "Maria Sanchez", // contacto
-                "Distribuidora Norte SAC", // empresa
+                45678912,
+                "Luis",
+                "Martinez",
+                "luis.martinez@proveedor.com",
+                "provepass",
+                Usuario.Roles.PROVEEDOR,
+                "Maria Sanchez",
+                "Distribuidora Norte SAC",
                 "20123456789"
         );
 
@@ -75,7 +75,7 @@ public class POO_Proyecto {
         Facturacion fact1 = new Facturacion(
                 Facturacion.TipoComprobante.BOLETA,
                 "F001-000123",
-                500.00, // subtotal
+                500.00,
                 96.00,
                 590.00
         );
@@ -87,10 +87,10 @@ public class POO_Proyecto {
         
         GenericDAO<Inventario> inventarioDAO = new GenericDAO();
         Inventario inventario = new Inventario(
-            100,               // stock
-            20,                // stockMinimo
-            200,               // stockMaximo
-            LocalDate.now()    // fechaActualizacion
+            100,
+            20,
+            200,
+            LocalDate.now()
         );
         
         inventarioDAO.saveClass(inventario);
