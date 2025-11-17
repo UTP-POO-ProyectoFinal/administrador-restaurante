@@ -9,6 +9,7 @@ import org.hibernate.cfg.Configuration;
 import com.mycompany.poo_proyecto.model.usuario.*;
 import com.mycompany.poo_proyecto.model.facturacion.Facturacion;
 import com.mycompany.poo_proyecto.model.inventario.Inventario;
+import org.hibernate.HibernateException;
 
 public class DatabaseConnection {    
     private static SessionFactory sessionFactory;
@@ -39,8 +40,8 @@ public class DatabaseConnection {
                         .applySettings(configuration.getProperties());
 
                 sessionFactory = configuration.buildSessionFactory(serviceRegistry.build());
-            } catch (Exception e) {
-                e.printStackTrace();
+            } catch (HibernateException e) {
+                System.err.print(e);
             }
         }
         return sessionFactory;
