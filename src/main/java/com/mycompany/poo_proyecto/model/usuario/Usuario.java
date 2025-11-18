@@ -8,6 +8,7 @@ import jakarta.persistence.MappedSuperclass;
 
 @MappedSuperclass
 public abstract class Usuario {
+
     public enum Roles {
         ADMINISTRADOR, CAJERO, CLIENTE, PROVEEDOR, USUARIO
     }
@@ -17,16 +18,19 @@ public abstract class Usuario {
     @Column(name = "id_usuario", nullable = false)
     protected int idUsuario;
 
-    @Column(name = "dni", nullable = false)
+    @Column(name = "dni", nullable = false, unique = true)
     protected int dni;
 
-    @Column(name = "nombre", nullable = false)
+    @Column(name = "usuario", nullable = false, unique = true)
+    protected String usuario;
+    
+    @Column(name = "nombre", nullable = true)
     protected String nombre;
 
-    @Column(name = "apellido", nullable = false)
-    protected String apellido;
+    @Column(name = "apellidos", nullable = true)
+    protected String apellidos;
 
-    @Column(name = "correo", nullable = false)
+    @Column(name = "correo", nullable = false, unique = true)
     protected String correo;
 
     @Column(name = "password", nullable = false)
@@ -35,19 +39,22 @@ public abstract class Usuario {
     @Column(name = "rol", nullable = false)
     protected Roles rol;
 
-
     public Usuario() {
     }
 
-    public Usuario(int dni, String nombre, String apellido, String correo, String password, Roles rol) {
+    public Usuario(int dni, String usuario, String nombre, String apellidos, String correo, String password, Roles rol) {
         this.dni = dni;
-        this.nombre = nombre;
-        this.apellido = apellido;
+        this.usuario = usuario;
         this.correo = correo;
         this.password = password;
         this.rol = rol;
     }
-
+    
+    public Usuario(int dni, String correo, Roles rol) {
+        this.dni = dni;
+        this.correo = correo;
+        this.rol = rol; 
+    }
 
     public abstract boolean login(); //Esta parte aun no se desarrolla
 
@@ -65,8 +72,8 @@ public abstract class Usuario {
         return nombre;
     }
 
-    public String getApellido() {
-        return apellido;
+    public String getApellidos() {
+        return apellidos;
     }
 
     public String getCorreo() {

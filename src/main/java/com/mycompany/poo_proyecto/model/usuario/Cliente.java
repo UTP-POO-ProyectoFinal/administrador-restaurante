@@ -1,16 +1,25 @@
 package com.mycompany.poo_proyecto.model.usuario;
 
 import com.mycompany.poo_proyecto.model.pedido.Pedido;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import java.util.*;
 
 @Entity
 @Table(name = "clientes")
-public class Cliente extends Usuario {
+public class Cliente {
 
-    @Column(name = "telefono", nullable = false)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_cliente", nullable = false)
+    private int idCliente;
+
+    @Column(name = "dni", nullable = false, unique = true)
+    private int dni;
+
+    @Column(name = "nombre", nullable = false)
+    private String nombre;
+
+    @Column(name = "telefono", nullable = false, unique = true)
     private int telefono;
 
     @Column(name = "direccion", nullable = false)
@@ -23,21 +32,22 @@ public class Cliente extends Usuario {
 
     }
 
-    public Cliente(int dni, String nombre, String apellido, String correo, String password, Roles rol, int telefono, String direccion, List<Pedido> historialCompras) {
-        super(dni, nombre, apellido, correo, password, rol);
+    public Cliente(int dni, String nombre, int telefono, String direccion, List<Pedido> historialCompras) {
+        this.dni = dni;
+        this.nombre = nombre;
         this.telefono = telefono;
         this.direccion = direccion;
         this.historialCompras = historialCompras;
     }
-    
+
     public List<Pedido> getHistorialCompras() {
         return historialCompras;
     }
-    
-    public void setHistorialCompras(List<Pedido> historialCompras){
+
+    public void setHistorialCompras(List<Pedido> historialCompras) {
         this.historialCompras = historialCompras;
     }
-    
+
     public int getTelefono() {
         return telefono;
     }
@@ -52,15 +62,5 @@ public class Cliente extends Usuario {
 
     public void setDireccion(String direccion) {
         this.direccion = direccion;
-    }
-
-    @Override
-    public boolean login() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public void logout() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
