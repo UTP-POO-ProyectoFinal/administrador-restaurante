@@ -41,6 +41,8 @@ public class InventarioService {
             
             if (item.isBajoMinimo()) {
                 System.out.println("==ALERTA DE STOCK BAJO==\nQuedan " + item.getStock() + " unidades.");
+            } else {
+                System.out.println("==Stock Actualizado==\nNuevo Total: "+item.getStock());
             }
         } catch (Exception e) {
             System.err.println("Error al actualizar stock: " + e.getMessage());
