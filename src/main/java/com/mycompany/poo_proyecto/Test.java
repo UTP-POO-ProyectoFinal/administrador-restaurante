@@ -14,6 +14,7 @@ public class Test {
         GenericDAO<Administrador> adminDAO = new GenericDAO<>();
         Administrador admin = new Administrador(
                 72212225,
+                "YixSoviet",
                 "Brayan",
                 "Saldarriaga Nizama",
                 "brayan@company.com",
@@ -28,6 +29,7 @@ public class Test {
         Cajero cajero = new Cajero(
                 12345678,
                 "Carlos",
+                "Carlos_cajerito",
                 "Ramirez",
                 "carlos.ramirez@tienda.com",
                 "1234pass",
@@ -39,15 +41,11 @@ public class Test {
 
         cajeroDAO.saveClass(cajero);
 
-        GenericDAO<Cliente> clienteDAO = new GenericDAO();
+        GenericDAO<Cliente> clienteDAO = new GenericDAO<>();
         List<Pedido> historialVacio = new ArrayList();
         Cliente cliente1 = new Cliente(
                 87654321,
-                "Ana",
-                "Lopez",
-                "ana.lopez@gmail.com",
-                "abcd1234",
-                Usuario.Roles.CLIENTE,
+                "Ana Lopez",
                 999888777,
                 "La casa de alguien",
                 historialVacio
@@ -59,10 +57,7 @@ public class Test {
         GenericDAO<Proveedor> proveedorDAO = new GenericDAO();
         Proveedor proveedor1 = new Proveedor(
                 45678912,
-                "Luis",
-                "Martinez",
                 "luis.martinez@proveedor.com",
-                "provepass",
                 Usuario.Roles.PROVEEDOR,
                 "Maria Sanchez",
                 "Distribuidora Norte SAC",
