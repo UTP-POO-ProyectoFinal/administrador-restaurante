@@ -44,7 +44,7 @@ public class Test {
         GenericDAO<Cliente> clienteDAO = new GenericDAO<>();
         List<Pedido> historialVacio = new ArrayList();
         Cliente cliente1 = new Cliente(
-                87654321,
+                "U63366336",
                 "Ana Lopez",
                 999888777,
                 "La casa de alguien",

@@ -13,8 +13,8 @@ public class Cliente {
     @Column(name = "id_cliente", nullable = false)
     private int idCliente;
 
-    @Column(name = "dni", nullable = false, unique = true)
-    private int dni;
+    @Column(name = "codigo_UTP", nullable = false, unique = true)
+    private String codigoUTP;
 
     @Column(name = "nombre", nullable = false)
     private String nombre;
@@ -32,8 +32,8 @@ public class Cliente {
 
     }
 
-    public Cliente(int dni, String nombre, int telefono, String direccion, List<Pedido> historialCompras) {
-        this.dni = dni;
+    public Cliente(String codigoUTP, String nombre, int telefono, String direccion, List<Pedido> historialCompras) {
+        this.codigoUTP = codigoUTP;
         this.nombre = nombre;
         this.telefono = telefono;
         this.direccion = direccion;
@@ -43,7 +43,22 @@ public class Cliente {
     public List<Pedido> getHistorialCompras() {
         return historialCompras;
     }
-
+    
+    public int getIdCliente(){
+        return idCliente;
+    }
+    public String getCodigoUTP(){
+        return codigoUTP;
+    }
+    public void setCodigoUTP(String codigoUTP){
+        this.codigoUTP = codigoUTP;
+    }
+    public String getNombre(){
+        return nombre;
+    }
+    public void setNombre(String nombre){
+        this.nombre=nombre;
+    }
     public void setHistorialCompras(List<Pedido> historialCompras) {
         this.historialCompras = historialCompras;
     }
