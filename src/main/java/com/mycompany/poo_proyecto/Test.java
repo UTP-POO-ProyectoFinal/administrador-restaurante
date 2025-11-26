@@ -45,10 +45,10 @@ public class Test {
         List<Pedido> historialVacio = new ArrayList();
         Cliente cliente1 = new Cliente(
                 "U63366336",
+                "1234",
                 "Ana Lopez",
                 999888777,
-                "La casa de alguien",
-                historialVacio
+                "La casa de alguien"
                 
         );
 

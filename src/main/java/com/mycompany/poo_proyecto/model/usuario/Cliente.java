@@ -15,7 +15,10 @@ public class Cliente {
 
     @Column(name = "codigo_UTP", nullable = false, unique = true)
     private String codigoUTP;
-
+    
+    @Column(name ="password", nullable = false)
+    private String password;
+    
     @Column(name = "nombre", nullable = false)
     private String nombre;
 
@@ -24,20 +27,20 @@ public class Cliente {
 
     @Column(name = "direccion", nullable = false)
     private String direccion;
-
-    @Column(name = "historial_compras", nullable = false)
+    
+    @Transient
     private List<Pedido> historialCompras = new ArrayList();
 
     public Cliente() {
 
     }
 
-    public Cliente(String codigoUTP, String nombre, int telefono, String direccion, List<Pedido> historialCompras) {
+    public Cliente(String codigoUTP, String password, String nombre, int telefono, String direccion){
         this.codigoUTP = codigoUTP;
+        this.password = password;
         this.nombre = nombre;
         this.telefono = telefono;
         this.direccion = direccion;
-        this.historialCompras = historialCompras;
     }
 
     public List<Pedido> getHistorialCompras() {
@@ -52,6 +55,12 @@ public class Cliente {
     }
     public void setCodigoUTP(String codigoUTP){
         this.codigoUTP = codigoUTP;
+    }
+    public String getPassword(){
+        return password;
+    }
+    public void setPassword(String password){
+        this.password = password;
     }
     public String getNombre(){
         return nombre;
