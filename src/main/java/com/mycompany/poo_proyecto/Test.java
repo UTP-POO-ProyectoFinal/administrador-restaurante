@@ -10,7 +10,7 @@ import java.util.*;
 
 public class Test {
 
-    public void main() {
+    public static void main(String[]args) {
         GenericDAO<Administrador> adminDAO = new GenericDAO<>();
         Administrador admin = new Administrador(
                 72212225,
