@@ -9,32 +9,41 @@ import org.hibernate.Transaction;
 public class GenericDAO<T> {
 
     public void saveClass(T classGen) {
+        Session session = null;
         Transaction transaction = null;
 
-        try (Session session = DatabaseConnection.getSessionFactory().openSession()) {
+        try{ session = DatabaseConnection.getSessionFactory().openSession(); 
             transaction = session.beginTransaction();
             session.persist(classGen);
             transaction.commit();
         } catch (Exception e) {
-            if (transaction != null) {
+            if (transaction != null && transaction.isActive()) {
                 transaction.rollback();
             }
-            System.err.println("Error al guardar: " + e);
+            System.err.println("Error al guardar: " + e.getMessage());
+        }finally{
+            if(session !=null){
+                session.close();
+            }
         }
     }
 
     public void updateClass(T classGen) {
+        Session session = null;
         Transaction transaction = null;
-        try (Session session = DatabaseConnection.getSessionFactory().openSession()) {
+        try{session = DatabaseConnection.getSessionFactory().openSession();
             transaction = session.beginTransaction();
             session.merge(classGen);
             transaction.commit();
         } catch (Exception e) {
-            if (transaction != null) {
+            if (transaction != null && transaction.isActive()) {
                 transaction.rollback();
-
             }
-            System.out.println("Error al actualizar: " + e);
+            System.out.println("Error al actualizar: " + e.getMessage());
+        }finally{
+            if(session !=null){
+                session.close();
+            }
         }
     }
 

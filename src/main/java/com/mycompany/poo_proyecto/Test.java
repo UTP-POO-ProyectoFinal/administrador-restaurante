@@ -63,6 +63,8 @@ public class Test {
                 "Distribuidora Norte SAC",
                 "20123456789"
         );
+        proveedor1.setPassword("363636");
+        proveedor1.setUsuario("Pepe");
 
         proveedorDAO.saveClass(proveedor1);
 

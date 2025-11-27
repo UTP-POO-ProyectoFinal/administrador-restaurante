@@ -45,6 +45,8 @@ public abstract class Usuario {
     public Usuario(int dni, String usuario, String nombre, String apellidos, String correo, String password, Roles rol) {
         this.dni = dni;
         this.usuario = usuario;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
         this.correo = correo;
         this.password = password;
         this.rol = rol;
@@ -63,7 +65,12 @@ public abstract class Usuario {
     public int getIdUsuario() {
         return idUsuario;
     }
-
+    public String getUsuario(){
+        return usuario;
+    }
+    public void setUsuario(String usuario){
+        this.usuario=usuario;
+    }
     public int getDni() {
         return dni;
     }

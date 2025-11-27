@@ -3,6 +3,7 @@ package com.mycompany.poo_proyecto.model.usuario;
 import com.mycompany.poo_proyecto.model.pedido.Pedido;
 import jakarta.persistence.*;
 import java.util.*;
+import jakarta.persistence.Transient;
 
 @Entity
 @Table(name = "clientes")

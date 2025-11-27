@@ -11,14 +11,14 @@ public class ClienteService {
     }
     
     public Cliente login(String codigoUTP, String password) {
-        Cliente clienteEncontrado = clienteDAO.buscarPorCampo(Cliente.class, "CodigoUTP", codigoUTP);
+        Cliente clienteEncontrado = clienteDAO.buscarPorCampo(Cliente.class, "codigoUTP", codigoUTP);
         if (clienteEncontrado != null && clienteEncontrado.getPassword().equals(password)) {
             return clienteEncontrado;
         }
         return null;
     }
     public boolean registrarEstudiante(String codigo, String nombre, String pass, int telefono, String direccion) {
-        if (clienteDAO.buscarPorCampo(Cliente.class, "CodigoUTP", codigo) != null) {
+        if (clienteDAO.buscarPorCampo(Cliente.class, "codigoUTP", codigo) != null) {
             return false; 
         }
         Cliente nuevo = new Cliente(codigo, pass, nombre, telefono, direccion);
@@ -28,4 +28,3 @@ public class ClienteService {
         return true;
     }
 }
-

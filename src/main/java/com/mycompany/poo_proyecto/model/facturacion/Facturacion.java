@@ -46,6 +46,8 @@ public class Facturacion {
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "id_cajero", nullable = false)
     private Cajero cajero;
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_cliente", nullable = false)
     private Cliente cliente;
 
     public Facturacion() {
