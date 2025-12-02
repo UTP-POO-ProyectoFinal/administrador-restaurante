@@ -31,13 +31,6 @@ public class MainCajero extends JFrame{
         add(tabbedPane);
     }
 
-    class PanelPedidosCajero extends JPanel {
-
-        public PanelPedidosCajero() {
-            add(new JLabel("Aquí irá el dashboard de pedidos (Imagen 10)"));
-        }
-    }
-
     class PanelMesasCajero extends JPanel {
 
         public PanelMesasCajero() {
