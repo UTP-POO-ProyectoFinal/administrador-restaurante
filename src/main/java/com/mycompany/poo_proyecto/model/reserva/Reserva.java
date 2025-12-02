@@ -6,6 +6,7 @@ import java.time.LocalTime;
 import com.mycompany.poo_proyecto.model.usuario.Cliente;
 import java.sql.Date;
 import java.sql.Time;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "reservas")
@@ -30,6 +31,12 @@ public class Reserva {
 
     @Column(name = "num_personas", nullable = false)
     private int numPersonas;
+
+    @Column(name = "hora_inicio_real")
+    private LocalDateTime horaInicioReal;
+
+    @Column(name = "hora_fin_limite")
+    private LocalDateTime horaFinLimite;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "estado", nullable = false)
@@ -76,7 +83,7 @@ public class Reserva {
     protected void onCreate() {
         fechaCreacion = LocalDate.now();
     }
-    
+
     public int getIdReserva() {
         return idReserva;
     }
@@ -118,6 +125,22 @@ public class Reserva {
 
     public Cliente getCliente() {
         return cliente;
+    }
+
+    public LocalDateTime getHoraInicioReal() {
+        return horaInicioReal;
+    }
+
+    public void setHoraInicioReal(LocalDateTime horaInicioReal) {
+        this.horaInicioReal = horaInicioReal;
+    }
+
+    public LocalDateTime getHoraFinLimite() {
+        return horaFinLimite;
+    }
+
+    public void setHoraFinLimite(LocalDateTime horaFinLimite) {
+        this.horaFinLimite = horaFinLimite;
     }
 
     public void setCliente(Cliente cliente) {

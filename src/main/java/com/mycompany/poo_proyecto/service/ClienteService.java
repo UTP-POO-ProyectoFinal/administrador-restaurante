@@ -10,21 +10,14 @@ public class ClienteService {
         this.clienteDAO = new GenericDAO<>();
     }
     
-    public Cliente login(String codigoUTP, String password) {
-        Cliente clienteEncontrado = clienteDAO.buscarPorCampo(Cliente.class, "codigoUTP", codigoUTP);
-        if (clienteEncontrado != null && clienteEncontrado.getPassword().equals(password)) {
-            return clienteEncontrado;
+    public Cliente buscarPorCodigo(String codigoUTP) {
+        return clienteDAO.buscarPorCampo(Cliente.class, "codigoUTP", codigoUTP);
         }
-        return null;
-    }
-    public boolean registrarEstudiante(String codigo, String nombre, String pass, int telefono, String direccion) {
-        if (clienteDAO.buscarPorCampo(Cliente.class, "codigoUTP", codigo) != null) {
-            return false; 
+    
+    public void crearClienteRapido(String codigo, String nombre) {
+        if (buscarPorCodigo(codigo)==null) {
+        Cliente nuevo = new Cliente(codigo,"U-------", nombre, 0, "Presencial");
+        clienteDAO.saveClass(nuevo); 
         }
-        Cliente nuevo = new Cliente(codigo, pass, nombre, telefono, direccion);
-        nuevo.setPassword(pass); 
-        
-        clienteDAO.saveClass(nuevo);
-        return true;
     }
 }

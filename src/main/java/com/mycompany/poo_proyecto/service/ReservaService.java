@@ -7,6 +7,7 @@ import com.mycompany.poo_proyecto.model.usuario.Cliente;
 import com.mycompany.poo_proyecto.utils.GenericDAO;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.LocalDateTime;
 
 public class ReservaService {
 
@@ -49,11 +50,17 @@ public class ReservaService {
     public void confirmarReserva(Reserva reserva) {
         if (reserva.getEstado() == EstadoReserva.PENDIENTE) {
             
-            actualizarEstado(reserva, EstadoReserva.CONFIRMADA);
-            System.out.println("Reserva CONFIRMADA para " + reserva.getCliente().getNombre());
+            reserva.setEstado(EstadoReserva.CONFIRMADA);
+            LocalDateTime ahora = LocalDateTime.now();
+            reserva.setHoraInicioReal(ahora);
+            reserva.setHoraFinLimite(ahora.plusMinutes(60));
+            reservaDAO.updateClass(reserva);
+            System.out.println("Reserva CONFIRMADA.");
+            System.out.println("Tiempo iniciado: " + ahora);
+            System.out.println("Hora de salida: " + reserva.getHoraFinLimite());
             
         } else {
-            System.out.println("No se puede confirmar: La reserva actual no está en estado PENDIENTE.");
+            System.out.println("Solo se pueden confirmar reservas pendientes.");
         }
     }
     
