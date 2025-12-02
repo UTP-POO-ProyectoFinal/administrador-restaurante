@@ -41,7 +41,7 @@ public class PanelPedidosCajero extends JPanel {
         pnlHeader.setLayout(new BoxLayout(pnlHeader, BoxLayout.Y_AXIS));
         pnlHeader.setOpaque(false);
 
-        // Título y Botón
+        
         JPanel pnlTop = new JPanel(new BorderLayout());
         pnlTop.setOpaque(false);
         pnlTop.setBorder(new EmptyBorder(0, 0, 15, 0));
@@ -228,10 +228,25 @@ public class PanelPedidosCajero extends JPanel {
     }
 
     private void accionNuevoPedido() {
-        String hora = LocalDateTime.now().format(DateTimeFormatter.ofPattern("hh:mm a"));
-        agregarFila("NEW-" + (modeloTabla.getRowCount() + 1), "Cliente Mostrador", EstadoPedido.PENDIENTE, hora, "S/. 15.00", "88888888", "1x Menú del Día", "-", "Mesa 5");
-        actualizarEstadisticas();
-        JOptionPane.showMessageDialog(this, "Pedido registrado exitosamente.");
+        Window parentWindow = SwingUtilities.getWindowAncestor(this);
+        FormularioPedido form = new FormularioPedido((Frame) parentWindow);
+        form.setVisible(true);
+        if (form.isPedidoGuardado()) {
+            
+            String hora = LocalDateTime.now().format(DateTimeFormatter.ofPattern("hh:mm a"));
+            agregarFila(
+                "N-" + (modeloTabla.getRowCount() + 100), 
+                form.getClienteSeleccionado(), 
+                EstadoPedido.PENDIENTE, 
+                hora, 
+                "S/. " + form.getTotal(), 
+                "DNI-PENDIENTE", 
+                form.getResumenProductos(), 
+                "correo@simulado.com", 
+                "Mesa Presencial"
+            );
+            actualizarEstadisticas();
+        }
     }
 
     private void agregarFila(String id, String cli, EstadoPedido est, String hora, String tot, String dni, String items, String cor, String dir) {
