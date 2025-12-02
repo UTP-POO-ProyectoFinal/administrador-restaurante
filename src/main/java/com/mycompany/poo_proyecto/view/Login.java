@@ -36,7 +36,7 @@ public class Login extends JFrame {
         lblSub.setForeground(Color.GRAY);
         lblSub.setBounds(25, 90, 300, 20);
         add(lblSub);
-        
+
         JLabel lblUser = new JLabel("Usuario de Sistema:");
         lblUser.setBounds(40, 130, 200, 20);
         add(lblUser);
@@ -73,18 +73,17 @@ public class Login extends JFrame {
             return;
         }
         Usuario personal = usuarioService.loginPersonal(user, pass);
-        
+
         if (personal != null) {
             String rol = personal.getRol().toString();
             JOptionPane.showMessageDialog(this, "Bienvenido " + personal.getNombre() + "\nRol: " + rol);
-            
+
             if (rol.equals("ADMINISTRADOR")) {
                 //new DashboardAdmin().setVisible(true);
             } else if (rol.equals("CAJERO")) {
-                
-                JOptionPane.showMessageDialog(this, "Abriendo Caja...");
+                new MainCajero().setVisible(true);
             }
-            
+
             this.dispose();
         } else {
             JOptionPane.showMessageDialog(this, "Acceso denegado.\nUsuario no encontrado o clave incorrecta.", "Error de Seguridad", JOptionPane.ERROR_MESSAGE);
