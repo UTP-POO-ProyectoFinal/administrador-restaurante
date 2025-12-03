@@ -1,1 +1,32 @@
+# Credenciales de base de datos (IMPORTANTE)
+database.properties
+**/database.properties
+
+# Archivos compilados
 /target/
+/build/
+/dist/
+/nbproject/private/
+*.class
+
+# Archivos de NetBeans
+nbproject/private/
+nbbuild/
+nbdist/
+.nb-gradle/
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Archivos temporales
+*.tmp
+*.bak
+*.swp
+*~
+
+# Configuraciones personales
+application-local.properties
