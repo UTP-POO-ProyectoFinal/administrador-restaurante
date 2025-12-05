@@ -1,6 +1,11 @@
 package com.mycompany.poo_proyecto.service;
 
 import com.mycompany.poo_proyecto.model.pedido.EstadoPedido;
+import static com.mycompany.poo_proyecto.model.pedido.EstadoPedido.CANCELADO;
+import static com.mycompany.poo_proyecto.model.pedido.EstadoPedido.ENTREGADO;
+import static com.mycompany.poo_proyecto.model.pedido.EstadoPedido.EN_PREPARACION;
+import static com.mycompany.poo_proyecto.model.pedido.EstadoPedido.LISTO;
+import static com.mycompany.poo_proyecto.model.pedido.EstadoPedido.PENDIENTE;
 import com.mycompany.poo_proyecto.model.pedido.Pedido;
 import com.mycompany.poo_proyecto.utils.GenericDAO;
 
@@ -12,11 +17,16 @@ public class PedidoService {
         this.pedidoDAO = new GenericDAO<>();
     }
 
-    public void registrarPedido(String tipo, int idCliente, int idMesa) {
-        Pedido nuevoPedido = new Pedido(EstadoPedido.PENDIENTE.name(), tipo, idCliente, idMesa);
+    public java.util.List<Pedido> listarPedidos() {
+        return pedidoDAO.listarTodos(Pedido.class);
+    }
 
+    public void registrarPedido(String tipo, int idCliente, int idMesa, double total) {
+        Pedido nuevoPedido = new Pedido(EstadoPedido.PENDIENTE.name(), tipo, idCliente, idMesa);
+        nuevoPedido.setTotal(total);
+        
         pedidoDAO.saveClass(nuevoPedido);
-        System.out.println("Pedido registrado con estado: " + EstadoPedido.PENDIENTE);
+        System.out.println("✅ Pedido registrado. Total: S/ " + total);
     }
 
     private void actualizarEstado(Pedido pedido, EstadoPedido nuevoEstado) {

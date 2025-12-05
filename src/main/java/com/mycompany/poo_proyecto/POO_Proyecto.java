@@ -1,4 +1,4 @@
-package com.mycompany.poo_proyecto;
+/**package com.mycompany.poo_proyecto;
 
 import com.mycompany.poo_proyecto.view.Login;
 import java.io.*;
@@ -31,3 +31,4 @@ public class POO_Proyecto extends JFrame {
     
     
 }
+**/

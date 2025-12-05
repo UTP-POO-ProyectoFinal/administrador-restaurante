@@ -50,9 +50,6 @@ public class Facturacion {
     @JoinColumn(name = "id_cliente", nullable = false)
     private Cliente cliente;
 
-    @OneToMany(mappedBy = "facturacion", fetch = FetchType.LAZY)
-    private List<Pago> pagos = new ArrayList<>();
-    
     public Facturacion() {
     }
 

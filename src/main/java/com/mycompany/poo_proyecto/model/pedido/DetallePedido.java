@@ -20,13 +20,12 @@ public class DetallePedido {
     @Column(length = 255)
     private String observaciones;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_pedido", nullable = false)
-    private Pedido pedido;
-    
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_platillo", nullable = false)
-    private Platillo platillo;
+    @Column(name = "id_pedido", nullable = false)
+    private int idPedido;
+
+    @Column(name = "id_platillo", nullable = false)
+    private int idPlatillo;
+
     public DetallePedido() {
     }
 

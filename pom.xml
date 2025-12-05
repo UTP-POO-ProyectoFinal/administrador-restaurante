@@ -23,6 +23,16 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-controls</artifactId>
+            <version>21</version> 
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-fxml</artifactId>
+            <version>21</version>
+        </dependency>
+        <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-params</artifactId>
             <version>5.10.3</version>
@@ -40,4 +50,16 @@
         <maven.compiler.release>24</maven.compiler.release>
         <exec.mainClass>com.mycompany.poo_proyecto.POO_Proyecto</exec.mainClass>
     </properties>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.openjfx</groupId>
+                <artifactId>javafx-maven-plugin</artifactId>
+                <version>0.0.8</version>
+                <configuration>
+                    <mainClass>com.mycompany.poo_proyecto.AppEscritorio</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

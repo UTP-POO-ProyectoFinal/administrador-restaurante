@@ -24,16 +24,11 @@ public class Pedido {
     @Column(nullable = false)
     private String tipo;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_cliente", nullable = false)
-    private Cliente cliente;
-    
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_mesa", nullable = false)
-    private Mesa mesa;
-    
-    @OneToMany(mappedBy = "pedido", fetch = FetchType.LAZY)
-    private List<DetallePedido> detalles = new ArrayList<>();
+    @Column(name = "id_cliente", nullable = false)
+    private int idCliente;
+
+    @Column(name = "id_mesa", nullable = false)
+    private int idMesa;
 
     public Pedido() {
     }
@@ -44,8 +39,13 @@ public class Pedido {
         this.idCliente = idCliente;
         this.idMesa = idMesa;
         this.fechaHora = LocalDateTime.now();
+        this.total=0.0;
     }
-
+    
+    public void setTotal(double total) {
+        this.total = total;
+    }
+    
     public void cambiarEstado(String estado) {
         this.estado = estado;
     }

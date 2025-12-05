@@ -16,33 +16,42 @@ public class Cliente {
 
     @Column(name = "codigo_UTP", nullable = false, unique = true)
     private String codigoUTP;
-    
-    @Column(name ="password", nullable = false)
+
+    @Column(name = "password", nullable = false)
     private String password;
-    
+
     @Column(name = "nombre", nullable = false)
     private String nombre;
+
+    @Column(nullable = false)
+    private String apellido;
+
+    @Column(nullable = false)
+    private String correo;
+
+    @Column(name = "dni", nullable = false)
+    private String dni;
 
     @Column(name = "telefono", nullable = false, unique = true)
     private int telefono;
 
     @Column(name = "direccion", nullable = false)
     private String direccion;
-    
-    @OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY)
-    private List<Pedido> pedidos = new ArrayList<>();
-    
-    @OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY)
-    private List<Reserva> reservas = new ArrayList<>();
+
+    @Transient
+    private List<Pedido> historialCompras = new ArrayList();
 
     public Cliente() {
 
     }
 
-    public Cliente(String codigoUTP, String password, String nombre, int telefono, String direccion){
+    public Cliente(String codigoUTP, String password, String nombre, String apellido, String dni, String correo, int telefono, String direccion) {
         this.codigoUTP = codigoUTP;
         this.password = password;
         this.nombre = nombre;
+        this.apellido = apellido;
+        this.dni = dni;
+        this.correo = correo;
         this.telefono = telefono;
         this.direccion = direccion;
     }
@@ -50,28 +59,59 @@ public class Cliente {
     public List<Pedido> getHistorialCompras() {
         return historialCompras;
     }
-    
-    public int getIdCliente(){
+
+    public int getIdCliente() {
         return idCliente;
     }
-    public String getCodigoUTP(){
+
+    public String getCodigoUTP() {
         return codigoUTP;
     }
-    public void setCodigoUTP(String codigoUTP){
+
+    public void setCodigoUTP(String codigoUTP) {
         this.codigoUTP = codigoUTP;
     }
-    public String getPassword(){
+
+    public String getPassword() {
         return password;
     }
-    public void setPassword(String password){
+
+    public void setPassword(String password) {
         this.password = password;
     }
-    public String getNombre(){
+
+    public String getNombre() {
         return nombre;
     }
-    public void setNombre(String nombre){
-        this.nombre=nombre;
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public String getDni() {
+        return dni;
+    }
+
+    public void setDni(String correo) {
+        this.correo = correo;
+    }
+
     public void setHistorialCompras(List<Pedido> historialCompras) {
         this.historialCompras = historialCompras;
     }

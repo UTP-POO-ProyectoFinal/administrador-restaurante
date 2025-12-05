@@ -15,12 +15,4 @@ public class DetalleCompra {
     private double precioUnitario;
     private double subtotal;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_compra", nullable = false)
-    private Compra compra;
-    
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_producto", nullable = false)
-    private Producto producto;
-
 }

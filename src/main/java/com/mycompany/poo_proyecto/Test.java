@@ -9,7 +9,7 @@ import java.time.LocalDate;
 import java.util.*;
 
 public class Test {
-//hola prueba
+
     public static void main(String[]args) {
         GenericDAO<Administrador> adminDAO = new GenericDAO<>();
         Administrador admin = new Administrador(
@@ -46,7 +46,10 @@ public class Test {
         Cliente cliente1 = new Cliente(
                 "U63366336",
                 "1234",
-                "Ana Lopez",
+                "Ana",
+                "Lopez",
+                "12345678",
+                "sin_correo@utp.edu.pe",
                 999888777,
                 "La casa de alguien"
                 

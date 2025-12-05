@@ -20,7 +20,7 @@ public class Proveedor extends Usuario {
     public Proveedor() {
     }
 
-    public Proveedor(int dni, String correo, Roles rol,
+    public Proveedor(int dni, String correo, Usuario.Roles rol,
                      String contacto, String empresa, String ruc) {
         super(dni, correo, rol);
         this.contacto = contacto;
