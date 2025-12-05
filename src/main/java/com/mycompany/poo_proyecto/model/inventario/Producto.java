@@ -12,4 +12,8 @@ public class Producto {
     private String nombre;
     private double precio;
     private int stock;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_inventario")
+    private Inventario inventario;
 }
