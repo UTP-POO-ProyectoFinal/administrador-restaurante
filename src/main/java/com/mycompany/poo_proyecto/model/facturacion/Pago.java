@@ -27,8 +27,9 @@ public class Pago {
     @Column(name = "numero_transaccion", nullable = false)
     private String numeroTransaccion;
 
-    @Column(name = "id_facturacion", nullable = false)
-    private int idFacturacion;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_facturacion", nullable = false)
+    private Facturacion facturacion;
 
     
     public Pago() {
