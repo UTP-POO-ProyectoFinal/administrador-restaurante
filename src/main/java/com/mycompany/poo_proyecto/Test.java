@@ -9,7 +9,7 @@ import java.time.LocalDate;
 import java.util.*;
 
 public class Test {
-
+//hola prueba
     public static void main(String[]args) {
         GenericDAO<Administrador> adminDAO = new GenericDAO<>();
         Administrador admin = new Administrador(
