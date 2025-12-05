@@ -24,11 +24,16 @@ public class Pedido {
     @Column(nullable = false)
     private String tipo;
 
-    @Column(name = "id_cliente", nullable = false)
-    private int idCliente;
-
-    @Column(name = "id_mesa", nullable = false)
-    private int idMesa;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_cliente", nullable = false)
+    private Cliente cliente;
+    
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_mesa", nullable = false)
+    private Mesa mesa;
+    
+    @OneToMany(mappedBy = "pedido", fetch = FetchType.LAZY)
+    private List<DetallePedido> detalles = new ArrayList<>();
 
     public Pedido() {
     }
