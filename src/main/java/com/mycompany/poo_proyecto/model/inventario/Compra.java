@@ -21,6 +21,13 @@ public class Compra {
     private double total;
     private EstadoCompra estado;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_proveedor", nullable = false)
+    private Proveedor proveedor;
+    
+    @OneToMany(mappedBy = "compra", fetch = FetchType.LAZY)
+    private List<DetalleCompra> detalles = new ArrayList<>();
+    
     @PrePersist
     public void setFecha() {
         fecha = new Date(new java.util.Date().getTime());
