@@ -26,6 +26,10 @@ public class DetallePedido {
     @Column(name = "id_platillo", nullable = false)
     private int idPlatillo;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_platillo", insertable = false, updatable = false)
+    private Platillo platillo;
+
     public DetallePedido() {
     }
 
@@ -70,5 +74,9 @@ public class DetallePedido {
 
     public int getIdPlatillo() {
         return idPlatillo;
+    }
+
+    public Platillo getPlatillo() {
+        return platillo;
     }
 }

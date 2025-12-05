@@ -1,5 +1,6 @@
 package com.mycompany.poo_proyecto.model.pedido;
 
+import com.mycompany.poo_proyecto.model.reserva.Mesa;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
@@ -12,6 +13,7 @@ public class Pedido {
     @Column(name = "id_pedido")
     private int idPedido;
 
+    // CORRECCIÓN 1: El nombre debe coincidir exactamente con la BD y usarse así en HQL
     @Column(name = "fecha_hora", nullable = false)
     private LocalDateTime fechaHora;
 
@@ -27,8 +29,14 @@ public class Pedido {
     @Column(name = "id_cliente", nullable = false)
     private int idCliente;
 
+    // Mantenemos el int para compatibilidad con tus inserts actuales
     @Column(name = "id_mesa", nullable = false)
     private int idMesa;
+
+    // CORRECCIÓN 2: Agregamos la relación para consultas (Solo lectura para no romper inserts)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_mesa", insertable = false, updatable = false)
+    private Mesa mesa;
 
     public Pedido() {
     }
@@ -39,13 +47,13 @@ public class Pedido {
         this.idCliente = idCliente;
         this.idMesa = idMesa;
         this.fechaHora = LocalDateTime.now();
-        this.total=0.0;
+        this.total = 0.0;
     }
-    
+
     public void setTotal(double total) {
         this.total = total;
     }
-    
+
     public void cambiarEstado(String estado) {
         this.estado = estado;
     }
@@ -92,5 +100,9 @@ public class Pedido {
 
     public int getIdMesa() {
         return idMesa;
+    }
+
+    public Mesa getMesa() {
+        return mesa;
     }
 }

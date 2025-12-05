@@ -16,6 +16,7 @@ import com.mycompany.poo_proyecto.model.pedido.Pedido;
 import com.mycompany.poo_proyecto.model.pedido.Platillo;
 import com.mycompany.poo_proyecto.model.reserva.Mesa;
 import org.hibernate.HibernateException;
+import org.hibernate.Session;
 
 public class DatabaseConnection {
 
@@ -44,7 +45,7 @@ public class DatabaseConnection {
                 configuration.addAnnotatedClass(Inventario.class);
                 configuration.addAnnotatedClass(Reserva.class);
                 configuration.addAnnotatedClass(Pedido.class);
-                configuration.addAnnotatedClass(Mesa.class);         
+                configuration.addAnnotatedClass(Mesa.class);
                 configuration.addAnnotatedClass(Pago.class);
                 configuration.addAnnotatedClass(Platillo.class);
                 configuration.addAnnotatedClass(DetallePedido.class);
@@ -60,5 +61,14 @@ public class DatabaseConnection {
         }
         return sessionFactory;
     }
-    
+
+    public static Session getSession() {
+        return getSessionFactory().openSession();
+    }
+
+    public static void shutdown() {
+        if (sessionFactory != null) {
+            sessionFactory.close();
+        }
+    }
 }

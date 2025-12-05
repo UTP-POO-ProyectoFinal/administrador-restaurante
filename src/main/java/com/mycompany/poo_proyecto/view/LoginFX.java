@@ -9,7 +9,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class LoginFX {
+public class LoginFX extends Stage{
 
     private final UsuarioService usuarioService;
     private Stage loginStage; 
@@ -66,8 +66,7 @@ public class LoginFX {
         if (rol.equals("CAJERO")) {
             new MainCajeroFX().start(new Stage()); 
         } else if (rol.equals("ADMINISTRADOR")) {
-            // new DashboardAdminFX().start(new Stage()); //Abriríamos Admin
-            mostrarAlerta("Bienvenido", "Hola Admin " + usuario.getNombre());
+            new MainAdminFX().show();
         }
     }
 

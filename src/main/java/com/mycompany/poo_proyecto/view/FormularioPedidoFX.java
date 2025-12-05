@@ -49,7 +49,32 @@ public class FormularioPedidoFX extends Stage {
             new ProductoDummy("Pizza Americana", 18.00),
             new ProductoDummy("Gaseosa 500ml", 3.50),
             new ProductoDummy("Agua Mineral", 2.50),
-            new ProductoDummy("Café Pasado", 4.00)
+            new ProductoDummy("Café Pasado", 4.00),
+            new ProductoDummy("Café Americano", 5.00),
+            new ProductoDummy("Café Latte", 7.50),
+            new ProductoDummy("Capuchino", 7.00),
+            new ProductoDummy("Mocaccino", 8.00),
+            new ProductoDummy("Chocolate Caliente", 6.00),
+            new ProductoDummy("Té Verde", 4.00),
+            new ProductoDummy("Frappé de Café", 9.50),
+            new ProductoDummy("Sandwich de Pollo", 8.50),
+            new ProductoDummy("Sandwich Triple", 10.00),
+            new ProductoDummy("Empanada de Carne", 4.50),
+            new ProductoDummy("Empanada de Pollo", 4.50),
+            new ProductoDummy("Croissant Simple", 5.00),
+            new ProductoDummy("Croissant de Jamón y Queso", 7.50),
+            new ProductoDummy("Muffin de Arándanos", 6.00),
+            new ProductoDummy("Brownie", 5.50),
+            new ProductoDummy("Cheesecake", 9.00),
+            new ProductoDummy("Galleta de Chocolate", 3.00),
+            new ProductoDummy("Jugo de Naranja", 6.00),
+            new ProductoDummy("Limonada",  5.00),
+            new ProductoDummy("Agua Mineral 500ml", 3.00),
+            new ProductoDummy("Inka Kola 500ml", 4.50),
+            new ProductoDummy("Coca Cola 500ml", 4.50),
+            new ProductoDummy("Ensalada César", 12.00),
+            new ProductoDummy("Wrap de Pollo", 11.00),
+            new ProductoDummy("Papa Rellena", 6.00)  
         );
     }
 
