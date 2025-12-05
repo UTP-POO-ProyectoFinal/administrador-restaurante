@@ -29,8 +29,11 @@ public class Cliente {
     @Column(name = "direccion", nullable = false)
     private String direccion;
     
-    @Transient
-    private List<Pedido> historialCompras = new ArrayList();
+    @OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY)
+    private List<Pedido> pedidos = new ArrayList<>();
+    
+    @OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY)
+    private List<Reserva> reservas = new ArrayList<>();
 
     public Cliente() {
 
