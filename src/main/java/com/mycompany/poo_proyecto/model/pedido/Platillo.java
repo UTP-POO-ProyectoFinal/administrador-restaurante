@@ -29,6 +29,9 @@ public class Platillo {
     @Column(nullable = false)
     private boolean disponible;
 
+    @OneToMany(mappedBy = "platillo", fetch = FetchType.LAZY)
+    private List<DetallePedido> detalles = new ArrayList<>();
+
     public Platillo() {
     }
 
